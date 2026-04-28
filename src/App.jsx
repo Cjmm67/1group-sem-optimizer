@@ -1287,22 +1287,22 @@ const RAGBadge = ({ level, children }) => {
 const Section = ({ title, subtitle, children, anchorId }) => (
   <section id={anchorId} className="space-y-4">
     <div>
-      <h2 style={{ fontFamily: 'Cormorant Garamond, Playfair Display, serif' }} className="text-3xl text-[#f5f5f5]">{title}</h2>
-      {subtitle && <p className="text-sm text-[#a3a3a3] mt-1">{subtitle}</p>}
+      <h2 style={{ fontFamily: 'Cormorant Garamond, Playfair Display, serif' }} className="text-3xl text-[#1a1814]">{title}</h2>
+      {subtitle && <p className="text-sm text-[#6b6660] mt-1">{subtitle}</p>}
     </div>
     {children}
   </section>
 );
 
 const Panel = ({ children, className = '' }) => (
-  <div className={`bg-[#161616] border border-[#2a2a2a] rounded-lg p-6 ${className}`}>{children}</div>
+  <div className={`bg-white border border-[#e8e2d8] rounded-lg p-6 ${className}`}>{children}</div>
 );
 
 const EmptyState = ({ icon: Icon = CheckCircle, message }) => (
   <Panel>
     <div className="flex flex-col items-center text-center py-8">
       <Icon className="w-10 h-10 text-[#404040] mb-4" />
-      <p className="text-[#737373] text-sm">{message}</p>
+      <p className="text-[#9a948e] text-sm">{message}</p>
     </div>
   </Panel>
 );
@@ -1310,14 +1310,14 @@ const EmptyState = ({ icon: Icon = CheckCircle, message }) => (
 const MetricCard = ({ label, value, sub, rag, Icon }) => {
   const accent = { red: '#dc2626', amber: '#d97706', green: '#16a34a' }[rag] || '#c9a961';
   return (
-    <div className="bg-[#161616] border border-[#2a2a2a] rounded-lg p-6 border-l-4" style={{ borderLeftColor: accent }}>
+    <div className="bg-white border border-[#e8e2d8] rounded-lg p-6 border-l-4" style={{ borderLeftColor: accent }}>
       <div className="flex items-start justify-between">
         <div>
-          <div className="text-xs text-[#a3a3a3] uppercase tracking-wider mb-2">{label}</div>
-          <div style={{ fontFamily: 'Cormorant Garamond, serif' }} className="text-4xl text-[#f5f5f5]">{value}</div>
-          {sub && <div className="text-xs text-[#a3a3a3] mt-2">{sub}</div>}
+          <div className="text-xs text-[#6b6660] uppercase tracking-wider mb-2">{label}</div>
+          <div style={{ fontFamily: 'Cormorant Garamond, serif' }} className="text-4xl text-[#1a1814]">{value}</div>
+          {sub && <div className="text-xs text-[#6b6660] mt-2">{sub}</div>}
         </div>
-        {Icon && <Icon className="w-5 h-5 text-[#737373]" />}
+        {Icon && <Icon className="w-5 h-5 text-[#9a948e]" />}
       </div>
     </div>
   );
@@ -1330,11 +1330,11 @@ const MetricCard = ({ label, value, sub, rag, Icon }) => {
 const SpendVsConversionsChart = ({ data, anomalyDates = [] }) => (
   <ResponsiveContainer width="100%" height={300}>
     <ComposedChart data={data} margin={{ top: 10, right: 20, left: 0, bottom: 10 }}>
-      <CartesianGrid stroke="#2a2a2a" strokeDasharray="3 3" />
-      <XAxis dataKey="date" stroke="#737373" tick={{ fontSize: 11 }} interval={Math.max(0, Math.floor(data.length / 8))} />
+      <CartesianGrid stroke="#e8e2d8" strokeDasharray="3 3" />
+      <XAxis dataKey="date" stroke="#9a948e" tick={{ fontSize: 11 }} interval={Math.max(0, Math.floor(data.length / 8))} />
       <YAxis yAxisId="spend" orientation="left" stroke="#c9a961" tickFormatter={(v) => `S$${v}`} tick={{ fontSize: 11 }} />
       <YAxis yAxisId="conv" orientation="right" stroke="#16a34a" tick={{ fontSize: 11 }} />
-      <Tooltip contentStyle={{ background: '#161616', border: '1px solid #404040', color: '#f5f5f5' }} labelStyle={{ color: '#f5f5f5' }} />
+      <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #c9c2b6', color: '#1a1814' }} labelStyle={{ color: '#1a1814' }} />
       <Legend wrapperStyle={{ fontSize: 12 }} />
       <Bar yAxisId="spend" dataKey="cost_sgd" name="Spend (S$)" fill="#c9a961" opacity={0.6} />
       <Line yAxisId="conv" dataKey="conversions" name="Conversions" stroke="#16a34a" strokeWidth={2} dot={false} />
@@ -1351,17 +1351,17 @@ const KeywordPerformanceScatter = ({ keywords, accountMedianConvRate }) => {
   return (
     <ResponsiveContainer width="100%" height={400}>
       <ScatterChart margin={{ top: 20, right: 20, left: 20, bottom: 30 }}>
-        <CartesianGrid stroke="#2a2a2a" />
-        <XAxis type="number" dataKey="cpc" name="CPC" stroke="#a3a3a3" label={{ value: 'CPC (S$)', position: 'insideBottom', offset: -5, fill: '#a3a3a3' }} />
-        <YAxis type="number" dataKey="convRate" name="Conv Rate" stroke="#a3a3a3" tickFormatter={(v) => `${(v * 100).toFixed(1)}%`} label={{ value: 'Conv Rate', angle: -90, position: 'insideLeft', fill: '#a3a3a3' }} />
-        <Tooltip cursor={{ strokeDasharray: '3 3' }} contentStyle={{ background: '#161616', border: '1px solid #404040', color: '#f5f5f5' }} formatter={(v, n, p) => n === 'Conv Rate' ? `${(v * 100).toFixed(2)}%` : v} />
+        <CartesianGrid stroke="#e8e2d8" />
+        <XAxis type="number" dataKey="cpc" name="CPC" stroke="#6b6660" label={{ value: 'CPC (S$)', position: 'insideBottom', offset: -5, fill: '#6b6660' }} />
+        <YAxis type="number" dataKey="convRate" name="Conv Rate" stroke="#6b6660" tickFormatter={(v) => `${(v * 100).toFixed(1)}%`} label={{ value: 'Conv Rate', angle: -90, position: 'insideLeft', fill: '#6b6660' }} />
+        <Tooltip cursor={{ strokeDasharray: '3 3' }} contentStyle={{ background: '#ffffff', border: '1px solid #c9c2b6', color: '#1a1814' }} formatter={(v, n, p) => n === 'Conv Rate' ? `${(v * 100).toFixed(2)}%` : v} />
         <Scatter data={data}>
           {data.map((d, i) => (
             <Cell key={i} fill={d.spend > 500 ? '#dc2626' : d.spend > 200 ? '#d97706' : '#c9a961'} />
           ))}
         </Scatter>
         {accountMedianConvRate > 0 && (
-          <ReferenceLine y={accountMedianConvRate} stroke="#737373" strokeDasharray="5 5" label={{ value: 'Median', fill: '#737373', position: 'right' }} />
+          <ReferenceLine y={accountMedianConvRate} stroke="#9a948e" strokeDasharray="5 5" label={{ value: 'Median', fill: '#9a948e', position: 'right' }} />
         )}
       </ScatterChart>
     </ResponsiveContainer>
@@ -1377,9 +1377,9 @@ const SearchTermTreemap = ({ data }) => {
     const fill = conversions === 0 ? '#dc2626' : conversions < 2 ? '#d97706' : '#16a34a';
     return (
       <g>
-        <rect x={x} y={y} width={width} height={height} fill={fill} fillOpacity={0.45} stroke="#0a0a0a" strokeWidth={1} />
+        <rect x={x} y={y} width={width} height={height} fill={fill} fillOpacity={0.45} stroke="#ffffff" strokeWidth={1} />
         {width > 70 && height > 28 && (
-          <text x={x + 8} y={y + 20} fill="#f5f5f5" fontSize={11} style={{ pointerEvents: 'none' }}>
+          <text x={x + 8} y={y + 20} fill="#1a1814" fontSize={11} style={{ pointerEvents: 'none' }}>
             {name?.length > 24 ? name.slice(0, 22) + '…' : name}
           </text>
         )}
@@ -1396,10 +1396,10 @@ const SearchTermTreemap = ({ data }) => {
 const HeadlineCTRChart = ({ data }) => (
   <ResponsiveContainer width="100%" height={Math.max(220, data.length * 36)}>
     <BarChart data={data} layout="vertical" margin={{ top: 10, right: 20, left: 30, bottom: 10 }}>
-      <CartesianGrid stroke="#2a2a2a" strokeDasharray="3 3" />
-      <XAxis type="number" tickFormatter={(v) => `${(v * 100).toFixed(1)}%`} stroke="#a3a3a3" />
-      <YAxis type="category" dataKey="label" width={200} stroke="#a3a3a3" tick={{ fontSize: 11 }} />
-      <Tooltip contentStyle={{ background: '#161616', border: '1px solid #404040', color: '#f5f5f5' }} formatter={(v) => `${(v * 100).toFixed(2)}%`} />
+      <CartesianGrid stroke="#e8e2d8" strokeDasharray="3 3" />
+      <XAxis type="number" tickFormatter={(v) => `${(v * 100).toFixed(1)}%`} stroke="#6b6660" />
+      <YAxis type="category" dataKey="label" width={200} stroke="#6b6660" tick={{ fontSize: 11 }} />
+      <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #c9c2b6', color: '#1a1814' }} formatter={(v) => `${(v * 100).toFixed(2)}%`} />
       <Bar dataKey="ctr">
         {data.map((d, i) => <Cell key={i} fill={d.fatigued ? '#dc2626' : '#c9a961'} />)}
       </Bar>
@@ -1410,10 +1410,10 @@ const HeadlineCTRChart = ({ data }) => (
 const AnomalyTimeline = ({ data, events }) => (
   <ResponsiveContainer width="100%" height={350}>
     <LineChart data={data} margin={{ top: 30, right: 20, left: 0, bottom: 10 }}>
-      <CartesianGrid stroke="#2a2a2a" strokeDasharray="3 3" />
-      <XAxis dataKey="date" stroke="#737373" tick={{ fontSize: 11 }} interval={Math.max(0, Math.floor(data.length / 8))} />
-      <YAxis stroke="#737373" tick={{ fontSize: 11 }} />
-      <Tooltip contentStyle={{ background: '#161616', border: '1px solid #404040', color: '#f5f5f5' }} />
+      <CartesianGrid stroke="#e8e2d8" strokeDasharray="3 3" />
+      <XAxis dataKey="date" stroke="#9a948e" tick={{ fontSize: 11 }} interval={Math.max(0, Math.floor(data.length / 8))} />
+      <YAxis stroke="#9a948e" tick={{ fontSize: 11 }} />
+      <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #c9c2b6', color: '#1a1814' }} />
       <Line dataKey="conversions" stroke="#c9a961" strokeWidth={2} dot={false} />
       {events.map((e, i) => {
         const point = data.find(d => d.date === e.date);
@@ -1421,7 +1421,7 @@ const AnomalyTimeline = ({ data, events }) => (
         return (
           <ReferenceDot key={i} x={e.date} y={point.conversions} r={6}
             fill={e.severity === 'high' ? '#dc2626' : '#d97706'} stroke="#f5f5f5"
-            label={{ value: e.shortLabel || e.description?.slice(0, 28), position: 'top', fill: '#f5f5f5', fontSize: 10 }} />
+            label={{ value: e.shortLabel || e.description?.slice(0, 28), position: 'top', fill: '#1a1814', fontSize: 10 }} />
         );
       })}
     </LineChart>
@@ -1433,13 +1433,13 @@ const BudgetSunburst = ({ current, recommended }) => {
   return (
     <ResponsiveContainer width="100%" height={400}>
       <PieChart>
-        <Pie data={current} dataKey="budget_sgd" nameKey="campaign" cx="50%" cy="50%" innerRadius={50} outerRadius={90} label={(e) => e.campaign?.length > 12 ? e.campaign.slice(0, 10) + '…' : e.campaign} labelLine={false} stroke="#0a0a0a">
+        <Pie data={current} dataKey="budget_sgd" nameKey="campaign" cx="50%" cy="50%" innerRadius={50} outerRadius={90} label={(e) => e.campaign?.length > 12 ? e.campaign.slice(0, 10) + '…' : e.campaign} labelLine={false} stroke="#ffffff">
           {current.map((c, i) => <Cell key={i} fill={colours[i % colours.length]} fillOpacity={0.55} />)}
         </Pie>
-        <Pie data={recommended} dataKey="budget_sgd" nameKey="campaign" cx="50%" cy="50%" innerRadius={105} outerRadius={150} label={(e) => `S$${e.budget_sgd}`} labelLine={false} stroke="#0a0a0a">
+        <Pie data={recommended} dataKey="budget_sgd" nameKey="campaign" cx="50%" cy="50%" innerRadius={105} outerRadius={150} label={(e) => `S$${e.budget_sgd}`} labelLine={false} stroke="#ffffff">
           {recommended.map((c, i) => <Cell key={i} fill={colours[i % colours.length]} />)}
         </Pie>
-        <Tooltip contentStyle={{ background: '#161616', border: '1px solid #404040', color: '#f5f5f5' }} />
+        <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #c9c2b6', color: '#1a1814' }} />
         <Legend wrapperStyle={{ fontSize: 11 }} />
       </PieChart>
     </ResponsiveContainer>
@@ -1456,10 +1456,10 @@ const QualityScoreHistogram = ({ keywords }) => {
   return (
     <ResponsiveContainer width="100%" height={250}>
       <BarChart data={buckets}>
-        <CartesianGrid stroke="#2a2a2a" strokeDasharray="3 3" />
-        <XAxis dataKey="qs" stroke="#a3a3a3" tick={{ fontSize: 11 }} />
-        <YAxis stroke="#a3a3a3" tick={{ fontSize: 11 }} />
-        <Tooltip contentStyle={{ background: '#161616', border: '1px solid #404040' }} />
+        <CartesianGrid stroke="#e8e2d8" strokeDasharray="3 3" />
+        <XAxis dataKey="qs" stroke="#6b6660" tick={{ fontSize: 11 }} />
+        <YAxis stroke="#6b6660" tick={{ fontSize: 11 }} />
+        <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #c9c2b6' }} />
         <Bar dataKey="count">
           {buckets.map((b, i) => <Cell key={i} fill={colours[i]} />)}
         </Bar>
@@ -1473,7 +1473,7 @@ const ImpressionShareWaterfall = ({ data }) => {
   const lostBudget = (data.search_lost_is_budget || 0.18) * 100;
   const lostRank = (data.search_lost_is_rank || 0.20) * 100;
   const waterfallData = [
-    { name: 'Potential', value: 100, fill: '#737373' },
+    { name: 'Potential', value: 100, fill: '#9a948e' },
     { name: 'Lost to budget', value: lostBudget, fill: '#dc2626' },
     { name: 'Lost to rank', value: lostRank, fill: '#d97706' },
     { name: 'Actual IS', value: sourceIS, fill: '#c9a961' }
@@ -1481,10 +1481,10 @@ const ImpressionShareWaterfall = ({ data }) => {
   return (
     <ResponsiveContainer width="100%" height={250}>
       <BarChart data={waterfallData}>
-        <CartesianGrid stroke="#2a2a2a" strokeDasharray="3 3" />
-        <XAxis dataKey="name" stroke="#a3a3a3" tick={{ fontSize: 11 }} />
-        <YAxis stroke="#a3a3a3" tick={{ fontSize: 11 }} tickFormatter={(v) => `${v}%`} />
-        <Tooltip contentStyle={{ background: '#161616', border: '1px solid #404040', color: '#f5f5f5' }} formatter={(v) => `${v.toFixed(1)}%`} />
+        <CartesianGrid stroke="#e8e2d8" strokeDasharray="3 3" />
+        <XAxis dataKey="name" stroke="#6b6660" tick={{ fontSize: 11 }} />
+        <YAxis stroke="#6b6660" tick={{ fontSize: 11 }} tickFormatter={(v) => `${v}%`} />
+        <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #c9c2b6', color: '#1a1814' }} formatter={(v) => `${v.toFixed(1)}%`} />
         <Bar dataKey="value">
           {waterfallData.map((d, i) => <Cell key={i} fill={d.fill} />)}
         </Bar>
@@ -1496,10 +1496,10 @@ const ImpressionShareWaterfall = ({ data }) => {
 const FatigueDecayCurves = ({ ads, series }) => (
   <ResponsiveContainer width="100%" height={350}>
     <LineChart data={series} margin={{ top: 10, right: 20, left: 0, bottom: 10 }}>
-      <CartesianGrid stroke="#2a2a2a" strokeDasharray="3 3" />
-      <XAxis dataKey="date" stroke="#737373" tick={{ fontSize: 11 }} interval={Math.max(0, Math.floor(series.length / 8))} />
-      <YAxis stroke="#737373" tick={{ fontSize: 11 }} tickFormatter={(v) => `${(v * 100).toFixed(1)}%`} />
-      <Tooltip contentStyle={{ background: '#161616', border: '1px solid #404040', color: '#f5f5f5' }} formatter={(v) => `${(v * 100).toFixed(2)}%`} />
+      <CartesianGrid stroke="#e8e2d8" strokeDasharray="3 3" />
+      <XAxis dataKey="date" stroke="#9a948e" tick={{ fontSize: 11 }} interval={Math.max(0, Math.floor(series.length / 8))} />
+      <YAxis stroke="#9a948e" tick={{ fontSize: 11 }} tickFormatter={(v) => `${(v * 100).toFixed(1)}%`} />
+      <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #c9c2b6', color: '#1a1814' }} formatter={(v) => `${(v * 100).toFixed(2)}%`} />
       <Legend wrapperStyle={{ fontSize: 11 }} />
       {ads.map(ad => (
         <Line key={ad.id} dataKey={`ctr_${ad.id}`} stroke={ad.fatigued ? '#dc2626' : '#737373'} strokeWidth={ad.fatigued ? 2 : 1} opacity={ad.fatigued ? 1 : 0.5} dot={false} name={ad.label} />
@@ -1522,12 +1522,12 @@ const NegativeKeywordImpactProjection = ({ savings = 540, currentSpend = 2100 })
   return (
     <ResponsiveContainer width="100%" height={300}>
       <AreaChart data={data} margin={{ top: 10, right: 20, left: 0, bottom: 10 }}>
-        <CartesianGrid stroke="#2a2a2a" strokeDasharray="3 3" />
-        <XAxis dataKey="week" stroke="#a3a3a3" tick={{ fontSize: 11 }} />
-        <YAxis stroke="#a3a3a3" tick={{ fontSize: 11 }} tickFormatter={(v) => `S$${Math.round(v)}`} />
-        <Tooltip contentStyle={{ background: '#161616', border: '1px solid #404040', color: '#f5f5f5' }} formatter={(v) => `S$${v.toFixed(0)}`} />
+        <CartesianGrid stroke="#e8e2d8" strokeDasharray="3 3" />
+        <XAxis dataKey="week" stroke="#6b6660" tick={{ fontSize: 11 }} />
+        <YAxis stroke="#6b6660" tick={{ fontSize: 11 }} tickFormatter={(v) => `S$${Math.round(v)}`} />
+        <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #c9c2b6', color: '#1a1814' }} formatter={(v) => `S$${v.toFixed(0)}`} />
         <Legend wrapperStyle={{ fontSize: 11 }} />
-        <Area type="monotone" dataKey="spend" stackId="1" stroke="#737373" fill="#737373" name="Remaining spend" />
+        <Area type="monotone" dataKey="spend" stackId="1" stroke="#9a948e" fill="#9a948e" name="Remaining spend" />
         <Area type="monotone" dataKey="savings" stackId="1" stroke="#16a34a" fill="#16a34a" name="Savings from negatives" />
         <Area type="monotone" dataKey="reallocated" stackId="1" stroke="#c9a961" fill="#c9a961" name="Reallocated to opportunities" />
       </AreaChart>
@@ -1716,11 +1716,11 @@ export default function SEMOptimizerApp() {
   const hasData = state.demoMode || detectedReports.length > 0;
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#f5f5f5]" style={{ fontFamily: 'Inter Tight, system-ui, sans-serif' }}>
+    <div className="min-h-screen bg-[#faf7f2] text-[#1a1814]" style={{ fontFamily: 'Inter Tight, system-ui, sans-serif' }}>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter+Tight:wght@300;400;500;600&display=swap" />
 
       {/* HEADER */}
-      <header className="sticky top-0 z-30 bg-[#0a0a0a]/95 backdrop-blur border-b border-[#2a2a2a]">
+      <header className="sticky top-0 z-30 bg-[#faf7f2]/95 backdrop-blur border-b border-[#e8e2d8]">
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded bg-[#c9a961] flex items-center justify-center">
@@ -1728,15 +1728,15 @@ export default function SEMOptimizerApp() {
             </div>
             <div>
               <h1 style={{ fontFamily: 'Cormorant Garamond, serif' }} className="text-2xl leading-none">1-Group SEM Optimizer</h1>
-              <div className="text-xs text-[#a3a3a3] mt-0.5">Multi-agent Google Ads analysis · Singapore policy aware</div>
+              <div className="text-xs text-[#6b6660] mt-0.5">Multi-agent Google Ads analysis · Singapore policy aware</div>
             </div>
           </div>
           <div className="flex items-center gap-3 flex-wrap">
-            <select value={state.selectedVenue} onChange={(e) => dispatch({ type: 'SET_VENUE', payload: e.target.value })} className="bg-[#161616] border border-[#2a2a2a] rounded px-3 py-2 text-sm focus:border-[#c9a961] outline-none">
+            <select value={state.selectedVenue} onChange={(e) => dispatch({ type: 'SET_VENUE', payload: e.target.value })} className="bg-white border border-[#e8e2d8] rounded px-3 py-2 text-sm focus:border-[#c9a961] outline-none">
               {Object.entries(VENUES).map(([k, v]) => <option key={k} value={k}>{v.display_name}</option>)}
             </select>
             <span className="px-2 py-1 text-xs rounded border border-[#c9a961]/40 text-[#c9a961]">Mode {accessMode}</span>
-            <button onClick={() => dispatch({ type: 'TOGGLE_API_KEY_PANEL' })} className="text-xs text-[#a3a3a3] hover:text-[#c9a961]">{state.apiKey ? 'API ✓' : 'Set API key'}</button>
+            <button onClick={() => dispatch({ type: 'TOGGLE_API_KEY_PANEL' })} className="text-xs text-[#6b6660] hover:text-[#c9a961]">{state.apiKey ? 'API ✓' : 'Set API key'}</button>
           </div>
         </div>
       </header>
@@ -1746,8 +1746,8 @@ export default function SEMOptimizerApp() {
         {state.showApiKeyPanel && (
           <Panel>
             <h3 style={{ fontFamily: 'Cormorant Garamond, serif' }} className="text-xl mb-3">Anthropic API key</h3>
-            <p className="text-sm text-[#a3a3a3] mb-3">Optional. If provided, agents call <code className="text-[#c9a961]">api.anthropic.com/v1/messages</code> in your browser. If omitted, the tool runs deterministic local analysis with the same output schema. Key is held in memory only — no localStorage.</p>
-            <input type="password" placeholder="sk-ant-…" value={state.apiKey} onChange={(e) => dispatch({ type: 'SET_API_KEY', payload: e.target.value })} className="w-full bg-[#0a0a0a] border border-[#404040] rounded px-3 py-2 text-sm" />
+            <p className="text-sm text-[#6b6660] mb-3">Optional. If provided, agents call <code className="text-[#c9a961]">api.anthropic.com/v1/messages</code> in your browser. If omitted, the tool runs deterministic local analysis with the same output schema. Key is held in memory only — no localStorage.</p>
+            <input type="password" placeholder="sk-ant-…" value={state.apiKey} onChange={(e) => dispatch({ type: 'SET_API_KEY', payload: e.target.value })} className="w-full bg-[#faf7f2] border border-[#c9c2b6] rounded px-3 py-2 text-sm" />
           </Panel>
         )}
 
@@ -1756,18 +1756,18 @@ export default function SEMOptimizerApp() {
           <Panel className="border-[#c9a961]/30">
             <div className="text-center py-6">
               <h2 style={{ fontFamily: 'Cormorant Garamond, serif' }} className="text-4xl mb-3">Audit, refresh, and protect your Google Ads</h2>
-              <p className="text-sm text-[#a3a3a3] max-w-2xl mx-auto mb-6">
+              <p className="text-sm text-[#6b6660] max-w-2xl mx-auto mb-6">
                 Eight specialist agents — Audit, Diagnostic, Research, Strategy, Compliance, Creative, Execution, Reporting — run sequentially against your account, surface findings, and produce confirmation-gated action cards. Singapore alcohol policy is enforced on every creative asset.
               </p>
               <div className="flex flex-col md:flex-row gap-3 justify-center">
                 <button onClick={() => dispatch({ type: 'TOGGLE_DEMO' })} className="bg-[#c9a961] text-[#0a0a0a] px-6 py-3 rounded font-semibold flex items-center justify-center gap-2">
                   <Play className="w-4 h-4" /> Try Demo Mode (1-Arden seeded data)
                 </button>
-                <label className="border border-[#404040] hover:border-[#c9a961] px-6 py-3 rounded cursor-pointer flex items-center justify-center gap-2 transition">
+                <label className="border border-[#c9c2b6] hover:border-[#c9a961] px-6 py-3 rounded cursor-pointer flex items-center justify-center gap-2 transition">
                   <Upload className="w-4 h-4" /> Upload Google Ads CSVs
                   <input type="file" accept=".csv" multiple className="hidden" onChange={(e) => Array.from(e.target.files).forEach(handleFile)} />
                 </label>
-                <button onClick={() => dispatch({ type: 'TOGGLE_SETUP' })} className="border border-[#404040] hover:border-[#c9a961] px-6 py-3 rounded flex items-center justify-center gap-2 transition">
+                <button onClick={() => dispatch({ type: 'TOGGLE_SETUP' })} className="border border-[#c9c2b6] hover:border-[#c9a961] px-6 py-3 rounded flex items-center justify-center gap-2 transition">
                   <Wifi className="w-4 h-4" /> Set up Mode 1 / Mode 2
                 </button>
               </div>
@@ -1780,23 +1780,23 @@ export default function SEMOptimizerApp() {
           <Panel>
             <div className="flex items-start justify-between mb-3">
               <h3 style={{ fontFamily: 'Cormorant Garamond, serif' }} className="text-xl">Connect Google Ads — Mode 1 or Mode 2</h3>
-              <button onClick={() => dispatch({ type: 'TOGGLE_SETUP' })}><X className="w-4 h-4 text-[#a3a3a3]" /></button>
+              <button onClick={() => dispatch({ type: 'TOGGLE_SETUP' })}><X className="w-4 h-4 text-[#6b6660]" /></button>
             </div>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-[#0a0a0a] rounded p-4 border border-[#2a2a2a]">
+              <div className="bg-[#faf7f2] rounded p-4 border border-[#e8e2d8]">
                 <div className="flex items-center gap-2 mb-2"><Wifi className="w-4 h-4 text-[#c9a961]" /><h4 className="text-[#c9a961]">Mode 1 — MCP (preferred)</h4></div>
-                <p className="text-xs text-[#a3a3a3] mb-3">Live reads + writes inside the chat. One-click apply.</p>
-                <ol className="text-xs text-[#a3a3a3] space-y-1 list-decimal list-inside">
+                <p className="text-xs text-[#6b6660] mb-3">Live reads + writes inside the chat. One-click apply.</p>
+                <ol className="text-xs text-[#6b6660] space-y-1 list-decimal list-inside">
                   <li>In Claude, click the connectors menu.</li>
                   <li>Search "Google Ads" in MCP registry.</li>
                   <li>Connect the official MCP server with OAuth.</li>
                   <li>Re-open this artifact — Mode 1 auto-detects.</li>
                 </ol>
               </div>
-              <div className="bg-[#0a0a0a] rounded p-4 border border-[#2a2a2a]">
+              <div className="bg-[#faf7f2] rounded p-4 border border-[#e8e2d8]">
                 <div className="flex items-center gap-2 mb-2"><Code className="w-4 h-4 text-[#c9a961]" /><h4 className="text-[#c9a961]">Mode 2 — Python</h4></div>
-                <p className="text-xs text-[#a3a3a3] mb-3">Reads + writes via google-ads SDK. Run locally.</p>
-                <ol className="text-xs text-[#a3a3a3] space-y-1 list-decimal list-inside">
+                <p className="text-xs text-[#6b6660] mb-3">Reads + writes via google-ads SDK. Run locally.</p>
+                <ol className="text-xs text-[#6b6660] space-y-1 list-decimal list-inside">
                   <li>Get developer token from ads.google.com → Tools → API Center.</li>
                   <li>Create OAuth 2.0 desktop client in Cloud Console.</li>
                   <li>Generate refresh token; save in google-ads.yaml.</li>
@@ -1814,7 +1814,7 @@ export default function SEMOptimizerApp() {
             <AlertCircle className="w-5 h-5 text-[#d97706] mt-0.5 shrink-0" />
             <div className="text-sm">
               <strong className="text-[#d97706]">Mode 3 (CSV) — read-only.</strong>
-              <ul className="text-xs text-[#a3a3a3] mt-1 space-y-0.5 list-disc list-inside">
+              <ul className="text-xs text-[#6b6660] mt-1 space-y-0.5 list-disc list-inside">
                 <li>Live keyword research unavailable — Research Agent estimates from existing campaign data.</li>
                 <li>Writes disabled — Apply produces copy-paste UI instructions, not direct API calls.</li>
                 <li>Change history depends on what was exported — anomaly hypotheses may be lower confidence.</li>
@@ -1829,22 +1829,22 @@ export default function SEMOptimizerApp() {
             <h3 style={{ fontFamily: 'Cormorant Garamond, serif' }} className="text-xl mb-3">Detected reports</h3>
             <div className="grid md:grid-cols-2 gap-2">
               {Object.keys(state.uploadedReports).map(k => (
-                <div key={k} className="flex items-center justify-between p-2 rounded border border-[#2a2a2a]">
+                <div key={k} className="flex items-center justify-between p-2 rounded border border-[#e8e2d8]">
                   <div className="flex items-center gap-2">
-                    {state.uploadedReports[k] ? <Check className="w-4 h-4 text-[#16a34a]" /> : <X className="w-4 h-4 text-[#737373]" />}
+                    {state.uploadedReports[k] ? <Check className="w-4 h-4 text-[#16a34a]" /> : <X className="w-4 h-4 text-[#9a948e]" />}
                     <div>
                       <div className="text-sm">{FILE_KEY_TO_LABEL[k]}</div>
-                      <div className="text-xs text-[#737373]">{state.uploadedReports[k] ? `${state.uploadedReports[k].length} rows` : REPORT_DESCRIPTIONS[k]}</div>
+                      <div className="text-xs text-[#9a948e]">{state.uploadedReports[k] ? `${state.uploadedReports[k].length} rows` : REPORT_DESCRIPTIONS[k]}</div>
                     </div>
                   </div>
                   {state.uploadedReports[k] && (
-                    <button onClick={() => dispatch({ type: 'CLEAR_REPORT', payload: k })} className="text-[#737373] hover:text-[#dc2626]"><Trash2 className="w-4 h-4" /></button>
+                    <button onClick={() => dispatch({ type: 'CLEAR_REPORT', payload: k })} className="text-[#9a948e] hover:text-[#dc2626]"><Trash2 className="w-4 h-4" /></button>
                   )}
                 </div>
               ))}
             </div>
             {missingReports.length > 0 && (
-              <p className="text-xs text-[#a3a3a3] mt-3">Missing reports limit some agents. Upload more CSVs anytime — auto-detection runs on each file.</p>
+              <p className="text-xs text-[#6b6660] mt-3">Missing reports limit some agents. Upload more CSVs anytime — auto-detection runs on each file.</p>
             )}
           </Panel>
         )}
@@ -1860,7 +1860,7 @@ export default function SEMOptimizerApp() {
                 onChange={(e) => dispatch({ type: 'SET_INPUT', payload: e.target.value })}
                 onKeyDown={(e) => { if (e.key === 'Enter') handleChatSubmit(); }}
                 placeholder='Ask anything: "audit our 1-Arden", "why did conversions drop?", "rewrite headlines"…'
-                className="flex-1 bg-[#0a0a0a] border border-[#404040] rounded px-3 py-2 text-sm focus:border-[#c9a961] outline-none"
+                className="flex-1 bg-[#faf7f2] border border-[#c9c2b6] rounded px-3 py-2 text-sm focus:border-[#c9a961] outline-none"
               />
               <button onClick={handleChatSubmit} className="bg-[#c9a961] text-[#0a0a0a] px-4 py-2 rounded font-semibold flex items-center gap-2"><Send className="w-4 h-4" /> Run</button>
             </div>
@@ -1873,7 +1873,7 @@ export default function SEMOptimizerApp() {
                 { id: 5, label: 'Quarterly plan', icon: Target },
                 { id: 6, label: 'Compliance sweep', icon: Shield },
               ].map(b => (
-                <button key={b.id} onClick={() => runWorkflow(b.id)} disabled={state.workflowState === 'running'} className="border border-[#2a2a2a] hover:border-[#c9a961] hover:text-[#c9a961] px-3 py-1.5 rounded transition flex items-center gap-1.5 disabled:opacity-40">
+                <button key={b.id} onClick={() => runWorkflow(b.id)} disabled={state.workflowState === 'running'} className="border border-[#e8e2d8] hover:border-[#c9a961] hover:text-[#c9a961] px-3 py-1.5 rounded transition flex items-center gap-1.5 disabled:opacity-40">
                   <b.icon className="w-3 h-3" /> {b.label}
                 </button>
               ))}
@@ -1888,17 +1888,17 @@ export default function SEMOptimizerApp() {
               <Info className="w-5 h-5 text-[#c9a961] mt-1" />
               <div className="flex-1">
                 <h4 style={{ fontFamily: 'Cormorant Garamond, serif' }} className="text-lg mb-2">One quick question</h4>
-                <p className="text-sm text-[#a3a3a3] mb-3">Your input was ambiguous. Which workflow fits best?</p>
+                <p className="text-sm text-[#6b6660] mb-3">Your input was ambiguous. Which workflow fits best?</p>
                 <div className="flex flex-wrap gap-2">
                   {[1, 2, 3, 4, 5, 6].map(id => (
-                    <button key={id} onClick={() => { dispatch({ type: 'CLEAR_CLARIFICATION' }); runWorkflow(id); }} className="border border-[#2a2a2a] hover:border-[#c9a961] px-3 py-2 rounded text-xs">
+                    <button key={id} onClick={() => { dispatch({ type: 'CLEAR_CLARIFICATION' }); runWorkflow(id); }} className="border border-[#e8e2d8] hover:border-[#c9a961] px-3 py-2 rounded text-xs">
                       <div className="text-[#c9a961] font-semibold">{WORKFLOWS[id].name}</div>
-                      <div className="text-[#737373] text-[10px] mt-0.5">~{WORKFLOWS[id].duration[0]}–{WORKFLOWS[id].duration[1]} min</div>
+                      <div className="text-[#9a948e] text-[10px] mt-0.5">~{WORKFLOWS[id].duration[0]}–{WORKFLOWS[id].duration[1]} min</div>
                     </button>
                   ))}
                 </div>
               </div>
-              <button onClick={() => dispatch({ type: 'CLEAR_CLARIFICATION' })}><X className="w-4 h-4 text-[#737373]" /></button>
+              <button onClick={() => dispatch({ type: 'CLEAR_CLARIFICATION' })}><X className="w-4 h-4 text-[#9a948e]" /></button>
             </div>
           </Panel>
         )}
@@ -1909,27 +1909,27 @@ export default function SEMOptimizerApp() {
             <div className="flex items-center justify-between mb-3">
               <div>
                 <h3 style={{ fontFamily: 'Cormorant Garamond, serif' }} className="text-xl">Running: {WORKFLOWS[state.activeWorkflow]?.name}</h3>
-                <p className="text-xs text-[#a3a3a3]">Workflow {state.activeWorkflow} · {state.agentProgress.length} agents · est {WORKFLOWS[state.activeWorkflow]?.duration?.join('–')} min</p>
+                <p className="text-xs text-[#6b6660]">Workflow {state.activeWorkflow} · {state.agentProgress.length} agents · est {WORKFLOWS[state.activeWorkflow]?.duration?.join('–')} min</p>
               </div>
-              <button onClick={() => dispatch({ type: 'CANCEL_WORKFLOW' })} className="text-xs text-[#737373] hover:text-[#dc2626]">Cancel</button>
+              <button onClick={() => dispatch({ type: 'CANCEL_WORKFLOW' })} className="text-xs text-[#9a948e] hover:text-[#dc2626]">Cancel</button>
             </div>
             <div className="space-y-2">
               {state.agentProgress.map((a, i) => (
                 <div key={i} className="flex items-center gap-3 text-sm">
                   <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0">
-                    {a.status === 'pending' && <Clock className="w-4 h-4 text-[#737373]" />}
+                    {a.status === 'pending' && <Clock className="w-4 h-4 text-[#9a948e]" />}
                     {a.status === 'running' && <Loader className="w-4 h-4 text-[#c9a961] animate-spin" />}
                     {a.status === 'done' && <CheckCircle className="w-4 h-4 text-[#16a34a]" />}
                     {a.status === 'failed' && <XCircle className="w-4 h-4 text-[#dc2626]" />}
                   </div>
                   <div className="flex-1">
-                    <div className={a.status === 'done' ? 'text-[#16a34a]' : a.status === 'running' ? 'text-[#c9a961]' : a.status === 'failed' ? 'text-[#dc2626]' : 'text-[#737373]'}>
+                    <div className={a.status === 'done' ? 'text-[#16a34a]' : a.status === 'running' ? 'text-[#c9a961]' : a.status === 'failed' ? 'text-[#dc2626]' : 'text-[#9a948e]'}>
                       {AGENT_LABELS[a.agent]}
                     </div>
                     {a.error && <div className="text-xs text-[#dc2626]">{a.error}</div>}
                   </div>
                   {a.durationMs !== null && a.durationMs !== undefined && a.status !== 'pending' && (
-                    <div className="text-xs text-[#737373]">{(a.durationMs / 1000).toFixed(1)}s</div>
+                    <div className="text-xs text-[#9a948e]">{(a.durationMs / 1000).toFixed(1)}s</div>
                   )}
                 </div>
               ))}
@@ -1942,12 +1942,12 @@ export default function SEMOptimizerApp() {
           <Panel className="border-[#c9a961]/40">
             <div className="flex items-start justify-between mb-3">
               <h3 style={{ fontFamily: 'Cormorant Garamond, serif' }} className="text-xl">Apply: {state.uiState.modeInstructions.action.title}</h3>
-              <button onClick={() => dispatch({ type: 'SET_MODE_INSTRUCTIONS', payload: null })}><X className="w-4 h-4 text-[#737373]" /></button>
+              <button onClick={() => dispatch({ type: 'SET_MODE_INSTRUCTIONS', payload: null })}><X className="w-4 h-4 text-[#9a948e]" /></button>
             </div>
             {state.uiState.modeInstructions.type === 'csv' && (
               <div>
-                <p className="text-xs text-[#a3a3a3] mb-2">Mode 3 — copy-paste these steps into ads.google.com:</p>
-                <ol className="bg-[#0a0a0a] rounded p-4 text-sm space-y-2">
+                <p className="text-xs text-[#6b6660] mb-2">Mode 3 — copy-paste these steps into ads.google.com:</p>
+                <ol className="bg-[#faf7f2] rounded p-4 text-sm space-y-2">
                   {state.uiState.modeInstructions.steps.map((s, i) => <li key={i}>{s}</li>)}
                 </ol>
                 <button onClick={() => navigator.clipboard?.writeText(state.uiState.modeInstructions.steps.join('\n'))} className="mt-3 text-xs text-[#c9a961] flex items-center gap-1"><Copy className="w-3 h-3" /> Copy steps</button>
@@ -1955,8 +1955,8 @@ export default function SEMOptimizerApp() {
             )}
             {state.uiState.modeInstructions.type === 'python' && (
               <div>
-                <p className="text-xs text-[#a3a3a3] mb-2">Mode 2 — runnable Python script. Save as run_action.py and execute locally.</p>
-                <pre className="bg-[#0a0a0a] rounded p-4 text-xs overflow-x-auto max-h-64 overflow-y-auto"><code>{state.uiState.modeInstructions.script}</code></pre>
+                <p className="text-xs text-[#6b6660] mb-2">Mode 2 — runnable Python script. Save as run_action.py and execute locally.</p>
+                <pre className="bg-[#faf7f2] rounded p-4 text-xs overflow-x-auto max-h-64 overflow-y-auto"><code>{state.uiState.modeInstructions.script}</code></pre>
                 <div className="flex gap-2 mt-3">
                   <button onClick={() => navigator.clipboard?.writeText(state.uiState.modeInstructions.script)} className="text-xs text-[#c9a961] flex items-center gap-1"><Copy className="w-3 h-3" /> Copy</button>
                   <button onClick={() => {
@@ -1969,8 +1969,8 @@ export default function SEMOptimizerApp() {
             )}
             {state.uiState.modeInstructions.type === 'mcp' && (
               <div>
-                <p className="text-xs text-[#a3a3a3] mb-2">Mode 1 — paste these into your Claude chat where the Google Ads MCP is connected:</p>
-                <pre className="bg-[#0a0a0a] rounded p-4 text-sm">{state.uiState.modeInstructions.lines.join('\n')}</pre>
+                <p className="text-xs text-[#6b6660] mb-2">Mode 1 — paste these into your Claude chat where the Google Ads MCP is connected:</p>
+                <pre className="bg-[#faf7f2] rounded p-4 text-sm">{state.uiState.modeInstructions.lines.join('\n')}</pre>
                 <button onClick={() => navigator.clipboard?.writeText(state.uiState.modeInstructions.lines.join('\n'))} className="mt-3 text-xs text-[#c9a961] flex items-center gap-1"><Copy className="w-3 h-3" /> Copy</button>
               </div>
             )}
@@ -2006,7 +2006,7 @@ export default function SEMOptimizerApp() {
               {state.changelog.map(c => (
                 <div key={c.id} className={`flex items-center justify-between text-xs ${c.undone ? 'opacity-40 line-through' : ''}`}>
                   <span>{c.title}</span>
-                  <span className="text-[#737373]">{new Date(c.ts).toLocaleTimeString()}</span>
+                  <span className="text-[#9a948e]">{new Date(c.ts).toLocaleTimeString()}</span>
                 </div>
               ))}
             </div>
@@ -2014,7 +2014,7 @@ export default function SEMOptimizerApp() {
         )}
       </main>
 
-      <footer className="border-t border-[#2a2a2a] mt-16 py-8 px-4 md:px-8 text-xs text-[#737373]">
+      <footer className="border-t border-[#e8e2d8] mt-16 py-8 px-4 md:px-8 text-xs text-[#9a948e]">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-4">
           <div>
             {state.activeWorkflow ? (
@@ -2091,17 +2091,17 @@ const Dashboard = ({ outputs, workflowId, venue, accessMode, data, uiState, disp
         </div>
         {aggregatedTimeSeries.length > 0 && (
           <Panel>
-            <h4 className="text-sm text-[#a3a3a3] mb-3">Spend vs conversions — last {aggregatedTimeSeries.length} days</h4>
+            <h4 className="text-sm text-[#6b6660] mb-3">Spend vs conversions — last {aggregatedTimeSeries.length} days</h4>
             <SpendVsConversionsChart data={aggregatedTimeSeries} anomalyDates={anomalyDates} />
           </Panel>
         )}
         <div className="grid md:grid-cols-2 gap-4">
           <Panel>
-            <h4 className="text-sm text-[#a3a3a3] mb-3">Quality score distribution</h4>
+            <h4 className="text-sm text-[#6b6660] mb-3">Quality score distribution</h4>
             <QualityScoreHistogram keywords={data.keyword_performance || []} />
           </Panel>
           <Panel>
-            <h4 className="text-sm text-[#a3a3a3] mb-3">Impression share waterfall</h4>
+            <h4 className="text-sm text-[#6b6660] mb-3">Impression share waterfall</h4>
             <ImpressionShareWaterfall data={(data.campaign_performance || []).slice(-1)[0] || {}} />
           </Panel>
         </div>
@@ -2114,20 +2114,20 @@ const Dashboard = ({ outputs, workflowId, venue, accessMode, data, uiState, disp
         ) : (
           <>
             <Panel>
-              <h4 className="text-sm text-[#a3a3a3] mb-3">Keyword performance (CPC × conv rate × spend)</h4>
+              <h4 className="text-sm text-[#6b6660] mb-3">Keyword performance (CPC × conv rate × spend)</h4>
               <KeywordPerformanceScatter keywords={data.keyword_performance || []} accountMedianConvRate={accountMedianConvRate} />
-              <p className="text-xs text-[#737373] mt-2">Bubble colour: red &gt; S$500 spend, amber S$200–500, gold below.</p>
+              <p className="text-xs text-[#9a948e] mt-2">Bubble colour: red &gt; S$500 spend, amber S$200–500, gold below.</p>
             </Panel>
             <Panel>
               <table className="w-full text-sm">
-                <thead className="text-xs text-[#a3a3a3] uppercase border-b border-[#2a2a2a]">
+                <thead className="text-xs text-[#6b6660] uppercase border-b border-[#e8e2d8]">
                   <tr><th className="text-left py-2 pr-2">Keyword</th><th className="text-left py-2 pr-2">Campaign</th><th className="text-right py-2 px-2">Spend</th><th className="text-right py-2 px-2">Clicks</th><th className="text-right py-2 px-2">Conv</th><th className="text-right py-2 px-2">QS</th><th className="text-left py-2 pl-2">Severity</th></tr>
                 </thead>
                 <tbody>
                   {audit.wasted_spend_findings.map(f => (
-                    <tr key={f.id} className="border-b border-[#2a2a2a]/50">
-                      <td className="py-2 pr-2 text-[#f5f5f5]">{f.keyword}</td>
-                      <td className="py-2 pr-2 text-[#a3a3a3]">{f.campaign}</td>
+                    <tr key={f.id} className="border-b border-[#e8e2d8]/50">
+                      <td className="py-2 pr-2 text-[#1a1814]">{f.keyword}</td>
+                      <td className="py-2 pr-2 text-[#6b6660]">{f.campaign}</td>
                       <td className="py-2 px-2 text-right">S${f.spend_sgd.toFixed(2)}</td>
                       <td className="py-2 px-2 text-right">{f.clicks}</td>
                       <td className="py-2 px-2 text-right">{f.conversions.toFixed(1)}</td>
@@ -2146,7 +2146,7 @@ const Dashboard = ({ outputs, workflowId, venue, accessMode, data, uiState, disp
       <Section title="Search Term Insights" anchorId="search-terms">
         {(data.search_terms || []).length > 0 && (
           <Panel>
-            <h4 className="text-sm text-[#a3a3a3] mb-3">Search term cost — colour: red = 0 conv, amber = &lt; 2 conv, green = converting</h4>
+            <h4 className="text-sm text-[#6b6660] mb-3">Search term cost — colour: red = 0 conv, amber = &lt; 2 conv, green = converting</h4>
             <SearchTermTreemap data={data.search_terms || []} />
           </Panel>
         )}
@@ -2154,13 +2154,13 @@ const Dashboard = ({ outputs, workflowId, venue, accessMode, data, uiState, disp
           <Panel>
             <h4 style={{ fontFamily: 'Cormorant Garamond, serif' }} className="text-lg mb-3 text-[#dc2626]">Negative candidates</h4>
             {(audit.negative_keyword_candidates || []).length === 0 ? (
-              <p className="text-xs text-[#737373]">No negative-keyword candidates above the click threshold.</p>
+              <p className="text-xs text-[#9a948e]">No negative-keyword candidates above the click threshold.</p>
             ) : (
               <ul className="space-y-2 text-sm">
                 {audit.negative_keyword_candidates.slice(0, 12).map((n, i) => (
-                  <li key={i} className="flex justify-between border-b border-[#2a2a2a]/50 pb-2">
-                    <span className="text-[#f5f5f5]">{n.search_term}</span>
-                    <span className="text-[#737373] text-xs">{n.clicks} clicks · S${n.spend_sgd.toFixed(0)}</span>
+                  <li key={i} className="flex justify-between border-b border-[#e8e2d8]/50 pb-2">
+                    <span className="text-[#1a1814]">{n.search_term}</span>
+                    <span className="text-[#9a948e] text-xs">{n.clicks} clicks · S${n.spend_sgd.toFixed(0)}</span>
                   </li>
                 ))}
               </ul>
@@ -2169,12 +2169,12 @@ const Dashboard = ({ outputs, workflowId, venue, accessMode, data, uiState, disp
           <Panel>
             <h4 style={{ fontFamily: 'Cormorant Garamond, serif' }} className="text-lg mb-3 text-[#16a34a]">New keyword opportunities</h4>
             {(audit.new_keyword_opportunities || []).length === 0 ? (
-              <p className="text-xs text-[#737373]">No new converting search terms above the threshold.</p>
+              <p className="text-xs text-[#9a948e]">No new converting search terms above the threshold.</p>
             ) : (
               <ul className="space-y-2 text-sm">
                 {audit.new_keyword_opportunities.slice(0, 12).map((n, i) => (
-                  <li key={i} className="flex justify-between border-b border-[#2a2a2a]/50 pb-2">
-                    <span className="text-[#f5f5f5]">{n.search_term}</span>
+                  <li key={i} className="flex justify-between border-b border-[#e8e2d8]/50 pb-2">
+                    <span className="text-[#1a1814]">{n.search_term}</span>
                     <span className="text-[#16a34a] text-xs">{n.conversions.toFixed(1)} conv</span>
                   </li>
                 ))}
@@ -2184,7 +2184,7 @@ const Dashboard = ({ outputs, workflowId, venue, accessMode, data, uiState, disp
         </div>
         {(audit.negative_keyword_candidates || []).length > 0 && (
           <Panel>
-            <h4 className="text-sm text-[#a3a3a3] mb-3">13-week projected impact of applying negatives</h4>
+            <h4 className="text-sm text-[#6b6660] mb-3">13-week projected impact of applying negatives</h4>
             <NegativeKeywordImpactProjection
               savings={(audit.negative_keyword_candidates || []).reduce((a, b) => a + b.spend_sgd, 0) * 4}
               currentSpend={(data.campaign_performance || []).reduce((a, b) => a + (b.cost_sgd || 0), 0) / 2}
@@ -2197,13 +2197,13 @@ const Dashboard = ({ outputs, workflowId, venue, accessMode, data, uiState, disp
       <Section title="Creative Performance" anchorId="creative">
         {headlineCtrData.length > 0 && (
           <Panel>
-            <h4 className="text-sm text-[#a3a3a3] mb-3">CTR by ad — red bars indicate fatigue</h4>
+            <h4 className="text-sm text-[#6b6660] mb-3">CTR by ad — red bars indicate fatigue</h4>
             <HeadlineCTRChart data={headlineCtrData} />
           </Panel>
         )}
         {data.fatigue_data && (
           <Panel>
-            <h4 className="text-sm text-[#a3a3a3] mb-3">CTR decay curves — fatigued ads in red</h4>
+            <h4 className="text-sm text-[#6b6660] mb-3">CTR decay curves — fatigued ads in red</h4>
             <FatigueDecayCurves ads={data.fatigue_data.ads} series={data.fatigue_data.series} />
           </Panel>
         )}
@@ -2212,9 +2212,9 @@ const Dashboard = ({ outputs, workflowId, venue, accessMode, data, uiState, disp
             <h4 style={{ fontFamily: 'Cormorant Garamond, serif' }} className="text-lg mb-3 text-[#dc2626]">Fatigue flags</h4>
             <ul className="space-y-3">
               {audit.creative_fatigue_findings.map(f => (
-                <li key={f.ad_id} className="border-b border-[#2a2a2a]/50 pb-3">
-                  <div className="text-sm text-[#f5f5f5]">{f.ad_group}</div>
-                  <div className="text-xs text-[#a3a3a3] mt-1">{f.narrative}</div>
+                <li key={f.ad_id} className="border-b border-[#e8e2d8]/50 pb-3">
+                  <div className="text-sm text-[#1a1814]">{f.ad_group}</div>
+                  <div className="text-xs text-[#6b6660] mt-1">{f.narrative}</div>
                   <div className="text-xs text-[#dc2626] mt-1">CTR {(f.ctr_recent * 100).toFixed(2)}% (was {(f.ctr_baseline * 100).toFixed(2)}%) — −{f.decay_pct.toFixed(0)}%</div>
                 </li>
               ))}
@@ -2224,30 +2224,30 @@ const Dashboard = ({ outputs, workflowId, venue, accessMode, data, uiState, disp
         {creative?.rsa_set && (
           <Panel>
             <h4 style={{ fontFamily: 'Cormorant Garamond, serif' }} className="text-lg mb-3 text-[#c9a961]">Creative Agent — proposed RSA</h4>
-            <p className="text-xs text-[#a3a3a3] mb-3">Predicted compliance: <RAGBadge level={creative.predicted_compliance_status || 'green'} /></p>
+            <p className="text-xs text-[#6b6660] mb-3">Predicted compliance: <RAGBadge level={creative.predicted_compliance_status || 'green'} /></p>
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <div className="text-xs text-[#a3a3a3] uppercase mb-2">Headlines (max 30 chars)</div>
+                <div className="text-xs text-[#6b6660] uppercase mb-2">Headlines (max 30 chars)</div>
                 <ul className="space-y-1 text-sm">
                   {creative.rsa_set.headlines.map((h, i) => (
                     <li key={i} className="flex justify-between">
-                      <span>{h.text}</span><span className="text-xs text-[#737373]">{h.char_count}c · {h.theme}</span>
+                      <span>{h.text}</span><span className="text-xs text-[#9a948e]">{h.char_count}c · {h.theme}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               <div>
-                <div className="text-xs text-[#a3a3a3] uppercase mb-2">Descriptions (max 90 chars)</div>
+                <div className="text-xs text-[#6b6660] uppercase mb-2">Descriptions (max 90 chars)</div>
                 <ul className="space-y-2 text-sm">
                   {creative.rsa_set.descriptions.map((d, i) => (
                     <li key={i} className="border-l-2 border-[#c9a961]/40 pl-2">
-                      {d.text}<div className="text-xs text-[#737373]">{d.char_count}c</div>
+                      {d.text}<div className="text-xs text-[#9a948e]">{d.char_count}c</div>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
-            {creative.rationale && <p className="text-xs text-[#a3a3a3] mt-3 italic">{creative.rationale}</p>}
+            {creative.rationale && <p className="text-xs text-[#6b6660] mt-3 italic">{creative.rationale}</p>}
           </Panel>
         )}
       </Section>
@@ -2259,25 +2259,25 @@ const Dashboard = ({ outputs, workflowId, venue, accessMode, data, uiState, disp
         ) : (
           <>
             <Panel>
-              <h4 className="text-sm text-[#a3a3a3] mb-1">{diagnostic.anomaly_summary?.metric} {diagnostic.anomaly_summary?.direction} of {Math.abs(diagnostic.anomaly_summary?.magnitude_pct).toFixed(1)}%</h4>
-              <p className="text-xs text-[#a3a3a3] mb-3">Window: {diagnostic.anomaly_summary?.window_start} → {diagnostic.anomaly_summary?.window_end}</p>
+              <h4 className="text-sm text-[#6b6660] mb-1">{diagnostic.anomaly_summary?.metric} {diagnostic.anomaly_summary?.direction} of {Math.abs(diagnostic.anomaly_summary?.magnitude_pct).toFixed(1)}%</h4>
+              <p className="text-xs text-[#6b6660] mb-3">Window: {diagnostic.anomaly_summary?.window_start} → {diagnostic.anomaly_summary?.window_end}</p>
               <AnomalyTimeline data={aggregatedTimeSeries} events={diagnostic.correlated_events?.map(e => ({ ...e, shortLabel: e.description?.slice(0, 26) })) || []} />
             </Panel>
             {diagnostic.inconclusive ? (
               <Panel className="border-[#d97706]/40">
-                <div className="flex items-start gap-3"><AlertTriangle className="w-5 h-5 text-[#d97706]" /><div><strong className="text-[#d97706]">Inconclusive.</strong><p className="text-sm text-[#a3a3a3] mt-1">Top hypothesis confidence below 0.5. Refusing to guess. Consider manual review or extend the analysis window.</p></div></div>
+                <div className="flex items-start gap-3"><AlertTriangle className="w-5 h-5 text-[#d97706]" /><div><strong className="text-[#d97706]">Inconclusive.</strong><p className="text-sm text-[#6b6660] mt-1">Top hypothesis confidence below 0.5. Refusing to guess. Consider manual review or extend the analysis window.</p></div></div>
               </Panel>
             ) : (
               <div className="grid md:grid-cols-2 gap-4">
                 {(diagnostic.hypotheses || []).map(h => (
                   <Panel key={h.rank}>
                     <div className="flex items-start justify-between mb-2">
-                      <span className="text-xs text-[#a3a3a3] uppercase">Hypothesis {h.rank}</span>
+                      <span className="text-xs text-[#6b6660] uppercase">Hypothesis {h.rank}</span>
                       <RAGBadge level={h.confidence > 0.7 ? 'green' : h.confidence > 0.5 ? 'amber' : 'red'}>conf {h.confidence?.toFixed(2)}</RAGBadge>
                     </div>
                     <h4 style={{ fontFamily: 'Cormorant Garamond, serif' }} className="text-lg mb-2">{h.cause}</h4>
-                    <p className="text-xs text-[#a3a3a3] mb-3">{h.evidence}</p>
-                    <div className="text-xs"><strong className="text-[#c9a961]">Next:</strong> <span className="text-[#a3a3a3]">{h.recommended_next_action}</span></div>
+                    <p className="text-xs text-[#6b6660] mb-3">{h.evidence}</p>
+                    <div className="text-xs"><strong className="text-[#c9a961]">Next:</strong> <span className="text-[#6b6660]">{h.recommended_next_action}</span></div>
                   </Panel>
                 ))}
               </div>
@@ -2292,7 +2292,7 @@ const Dashboard = ({ outputs, workflowId, venue, accessMode, data, uiState, disp
           <EmptyState icon={Shield} message="Compliance check not run in this workflow." />
         ) : compliance.summary?.red_count === 0 && compliance.summary?.amber_count === 0 ? (
           <Panel>
-            <div className="flex items-center gap-3"><CheckCircle className="w-6 h-6 text-[#16a34a]" /><div><h4 className="text-[#16a34a]">All clear</h4><p className="text-xs text-[#a3a3a3]">{compliance.per_asset_results.length} assets scanned. No alcohol, healthcare, gambling, financial, or trademark violations detected.</p></div></div>
+            <div className="flex items-center gap-3"><CheckCircle className="w-6 h-6 text-[#16a34a]" /><div><h4 className="text-[#16a34a]">All clear</h4><p className="text-xs text-[#6b6660]">{compliance.per_asset_results.length} assets scanned. No alcohol, healthcare, gambling, financial, or trademark violations detected.</p></div></div>
           </Panel>
         ) : (
           <>
@@ -2305,25 +2305,25 @@ const Dashboard = ({ outputs, workflowId, venue, accessMode, data, uiState, disp
               <h4 style={{ fontFamily: 'Cormorant Garamond, serif' }} className="text-lg mb-3">Flagged assets</h4>
               <div className="space-y-3">
                 {compliance.per_asset_results.filter(r => r.rag_status !== 'green').map(r => (
-                  <div key={r.asset_id} className="border-b border-[#2a2a2a]/50 pb-3">
+                  <div key={r.asset_id} className="border-b border-[#e8e2d8]/50 pb-3">
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <RAGBadge level={r.rag_status} />
-                        <span className="text-xs text-[#a3a3a3]">{r.asset_type}</span>
+                        <span className="text-xs text-[#6b6660]">{r.asset_type}</span>
                       </div>
                     </div>
                     <div className="grid md:grid-cols-2 gap-4 text-sm">
                       <div>
-                        <div className="text-xs text-[#a3a3a3] uppercase mb-1">Original</div>
-                        <div className="bg-[#dc2626]/10 rounded p-2 text-[#f5f5f5]">{r.content}</div>
+                        <div className="text-xs text-[#6b6660] uppercase mb-1">Original</div>
+                        <div className="bg-[#dc2626]/10 rounded p-2 text-[#1a1814]">{r.content}</div>
                       </div>
                       <div>
-                        <div className="text-xs text-[#a3a3a3] uppercase mb-1">Suggested rewrite</div>
-                        <div className="bg-[#16a34a]/10 rounded p-2 text-[#f5f5f5]">{r.violations[0]?.suggested_rewrite || '—'}</div>
+                        <div className="text-xs text-[#6b6660] uppercase mb-1">Suggested rewrite</div>
+                        <div className="bg-[#16a34a]/10 rounded p-2 text-[#1a1814]">{r.violations[0]?.suggested_rewrite || '—'}</div>
                       </div>
                     </div>
                     {r.violations.map((v, i) => (
-                      <div key={i} className="text-xs text-[#a3a3a3] mt-2"><strong className="text-[#dc2626]">{v.rule_id}</strong> · {v.rule_category} · evidence: "{v.evidence}"</div>
+                      <div key={i} className="text-xs text-[#6b6660] mt-2"><strong className="text-[#dc2626]">{v.rule_id}</strong> · {v.rule_category} · evidence: "{v.evidence}"</div>
                     ))}
                   </div>
                 ))}
@@ -2372,7 +2372,7 @@ const Dashboard = ({ outputs, workflowId, venue, accessMode, data, uiState, disp
             </div>
             {strategy.budget_allocation && (
               <Panel>
-                <h4 className="text-sm text-[#a3a3a3] mb-3">Budget allocation — inner ring: current · outer ring: recommended</h4>
+                <h4 className="text-sm text-[#6b6660] mb-3">Budget allocation — inner ring: current · outer ring: recommended</h4>
                 <BudgetSunburst current={strategy.budget_allocation.current} recommended={strategy.budget_allocation.recommended} />
               </Panel>
             )}
@@ -2395,58 +2395,58 @@ const ActionCard = ({ action, accessMode, executed, skipped, typedConfirm, onTyp
     <Panel className={`${executed ? 'border-[#16a34a]/40 bg-[#16a34a]/5' : skipped ? 'opacity-50' : action.refused ? 'border-[#dc2626]/40' : ''}`}>
       <div className="flex items-start justify-between mb-3">
         <div className="flex-1">
-          <div className="text-xs text-[#a3a3a3] uppercase tracking-wider mb-1">Priority {action.execution_priority} · {action.action_type}</div>
+          <div className="text-xs text-[#6b6660] uppercase tracking-wider mb-1">Priority {action.execution_priority} · {action.action_type}</div>
           <h3 style={{ fontFamily: 'Cormorant Garamond, serif' }} className="text-xl">{action.title}</h3>
-          <p className="text-xs text-[#737373] mt-1">{action.target}</p>
+          <p className="text-xs text-[#9a948e] mt-1">{action.target}</p>
         </div>
         <RAGBadge level={ragLevel}>conf {action.confidence?.toFixed(2)}</RAGBadge>
       </div>
 
       {action.refused ? (
         <div className="bg-[#dc2626]/10 border border-[#dc2626]/30 rounded p-3 text-sm">
-          <strong className="text-[#dc2626]">Refused:</strong> <span className="text-[#a3a3a3]">{action.refusal_reason}</span>
+          <strong className="text-[#dc2626]">Refused:</strong> <span className="text-[#6b6660]">{action.refusal_reason}</span>
         </div>
       ) : (
         <>
           <div className="grid md:grid-cols-2 gap-3 text-sm mb-3">
             <div>
-              <div className="text-xs text-[#a3a3a3] uppercase mb-1">Before</div>
-              <div className="bg-[#0a0a0a] rounded p-2 text-[#a3a3a3] text-xs">{action.before}</div>
+              <div className="text-xs text-[#6b6660] uppercase mb-1">Before</div>
+              <div className="bg-[#faf7f2] rounded p-2 text-[#6b6660] text-xs">{action.before}</div>
             </div>
             <div>
-              <div className="text-xs text-[#a3a3a3] uppercase mb-1">After</div>
-              <div className="bg-[#c9a961]/10 rounded p-2 text-[#f5f5f5] text-xs">{action.after}</div>
+              <div className="text-xs text-[#6b6660] uppercase mb-1">After</div>
+              <div className="bg-[#c9a961]/10 rounded p-2 text-[#1a1814] text-xs">{action.after}</div>
             </div>
           </div>
 
           <div className="flex items-center gap-4 text-sm flex-wrap mb-3">
-            <span className="text-[#a3a3a3] text-xs">Projected:</span>
+            <span className="text-[#6b6660] text-xs">Projected:</span>
             <span className="text-[#c9a961] font-semibold">
               {action.projected_impact?.delta > 0 ? '+' : ''}{action.projected_impact?.delta}{action.projected_impact?.unit === '%' ? '%' : ` ${action.projected_impact?.unit}`}
             </span>
-            <span className="text-[#737373] text-xs">{action.projected_impact?.metric}</span>
-            <span className="text-[#737373] text-xs italic">{action.confidence_reason}</span>
+            <span className="text-[#9a948e] text-xs">{action.projected_impact?.metric}</span>
+            <span className="text-[#9a948e] text-xs italic">{action.confidence_reason}</span>
           </div>
 
           {action.requires_typed_confirmation && !executed && (
             <div className="bg-[#d97706]/5 border border-[#d97706]/30 rounded p-3 mb-3">
               <p className="text-xs text-[#d97706] mb-2">This affects {action.affected_item_count} items. Type the confirmation phrase to proceed:</p>
-              <code className="text-xs text-[#a3a3a3] block mb-2">{expected}</code>
-              <input value={typedConfirm} onChange={(e) => onTypedChange(e.target.value)} placeholder="Type confirmation..." className="w-full bg-[#0a0a0a] border border-[#404040] rounded px-3 py-2 text-sm" />
+              <code className="text-xs text-[#6b6660] block mb-2">{expected}</code>
+              <input value={typedConfirm} onChange={(e) => onTypedChange(e.target.value)} placeholder="Type confirmation..." className="w-full bg-[#faf7f2] border border-[#c9c2b6] rounded px-3 py-2 text-sm" />
             </div>
           )}
 
           {executed ? (
             <div className="text-xs text-[#16a34a] flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Applied · check changelog to undo</div>
           ) : skipped ? (
-            <div className="text-xs text-[#737373]">Skipped</div>
+            <div className="text-xs text-[#9a948e]">Skipped</div>
           ) : (
             <div className="flex gap-2 flex-wrap">
               <button onClick={onApply} disabled={!canApply} className="bg-[#c9a961] text-[#0a0a0a] px-4 py-2 rounded text-sm font-semibold disabled:opacity-30 flex items-center gap-1">
                 {accessMode === 1 ? <Wifi className="w-3 h-3" /> : accessMode === 2 ? <Code className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
                 {accessMode === 3 ? 'Copy instructions' : 'Apply'}
               </button>
-              <button onClick={onSkip} className="text-[#737373] px-4 py-2 text-sm">Skip</button>
+              <button onClick={onSkip} className="text-[#9a948e] px-4 py-2 text-sm">Skip</button>
             </div>
           )}
         </>
