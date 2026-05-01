@@ -1,7 +1,7 @@
 {
   "name": "1group-sem-optimizer",
   "private": true,
-  "version": "0.2.1",
+  "version": "0.2.2",
   "type": "module",
   "scripts": {
     "dev": "next dev",
@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "15.5.4",
+    "next": "15.5.15",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "lucide-react": "0.454.0",
