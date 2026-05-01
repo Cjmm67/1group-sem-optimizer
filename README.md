@@ -2,36 +2,37 @@
 
 Multi-agent Google Ads analysis and Singapore-policy-aware optimisation co-pilot for 1-Group Singapore.
 
-## What it is
+## Stack
 
-A single-page React app implementing the `1group-sem-optimizer` skill:
+- Next.js 15 (App Router)
+- React 18
+- Tailwind CSS 3
+- Recharts 2
+- Lucide React
 
-- **8 specialist agents** — Audit, Diagnostic, Research, Strategy, Compliance, Creative, Execution, Reporting
-- **6 workflows** — Full Audit, Weekly Review, Anomaly Investigation, Creative Refresh, Quarterly Plan, Compliance Sweep
-- **3 access modes** — MCP (Mode 1), Python google-ads (Mode 2), CSV upload (Mode 3)
-- **10 chart types** rendered with Recharts
-- **Singapore alcohol policy** enforced inline by the Compliance Agent on every creative asset
-- **Demo mode** with seeded 1-Arden data including alcohol violations, fatigued ads, and a detectable conversion anomaly
+## Local dev
 
-## Local dev (optional)
-
-Requires Node 18+.
+Requires Node 20+.
 
 ```bash
 npm install
-npm run build
-npm run dev
+npm run dev      # localhost:3000
+npm run build    # production build
 ```
 
 ## Deploy
 
-Push this folder to GitHub, import to Vercel. Framework preset: Vite.
+Push to GitHub, import to Vercel. Framework preset: Next.js.
 
-No env vars are required for demo mode. Users paste an Anthropic API key in the running app if they want live agent calls — otherwise deterministic local fallbacks produce the same output schema.
+## Architecture (target, Phase 3+)
 
-## Stack
+- `/app/page.jsx` - main React dashboard (the SEM Optimizer)
+- `/app/api/gads/*` - Google Ads server-side adapter (Phase 3)
+- `/app/api/agents/*` - server-side Anthropic agent calls (Phase 4)
+- `/app/api/auth/*` - NextAuth + Google Workspace SSO (Phase 4)
 
-- React 18, Vite 5
-- Tailwind CSS 3
-- Recharts 2
-- Lucide React icons
+## Status
+
+- v0.1 - Vite scaffold, demo mode (`main` branch)
+- v0.2 - Next.js migration (this branch, `next-migration`)
+- v1.0 - Live Google Ads MCC integration, NextAuth, audit log (post Google API approval)
